@@ -14,7 +14,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch(`https://randomuser.me/api/?results=2`)
+    fetch(`https://randomuser.me/api/?results=10`)
      .then((response) => { return response.json()})
      .then( (data) => {
         setData(data.results)
@@ -27,15 +27,21 @@ function App() {
   return (
     <div className="App">
       <h1>Exercise</h1>
-      {data && data.map( ({gender , email , picture} , index) => {
+      <div className='people-container'>
+      {data && data.map( ({gender , email , picture , location} , index) => {
         return(
           <>
-          <p key={index}> {gender} email : {email}</p>
+          <div className='people-card'  key={index}>
+              <img src={picture.large} alt={index}></img>
+              <p> gender : {gender} </p>
+              <p> email : {email}</p>
+              <p> location : {location.country}</p>
+           </div>
+           </>
          
-          <img src={picture.large} alt={index}></img>
-          </>
         )
       })}
+      </div>
 
     </div>
   );
