@@ -22,17 +22,25 @@ function App() {
       
      })
    }, []);
+
+   const handleOnchange = (e) => {
+    const value = e.target.value
+    console.log(value)
+    
+   }
   
   console.log(data)
   return (
     <div className="App">
       <h1>Exercise</h1>
+      <input placeholder='search friend' onChange={handleOnchange}></input>
       <div className='people-container'>
-      {data && data.map( ({gender , email , picture , location} , index) => {
+      {data && data.map( ({gender , email , picture , location , id} , index) => {
         return(
           <>
           <div className='people-card'  key={index}>
               <img src={picture.large} alt={index}></img>
+              <p>name : {id.name}</p>
               <p> gender : {gender} </p>
               <p> email : {email}</p>
               <p> location : {location.country}</p>
