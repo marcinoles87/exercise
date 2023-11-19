@@ -2,22 +2,35 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .people-container{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content:space-around;
+  justify-content: center;
   align-items: center;
 }
 
 .people-card{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content:center;
+  align-items:center;
+  padding: 20px;
   width: 20%;
   margin: 10px;
   border: 2px solid grey;
+}
+
+input{
+  width: 200px;
+  height: 30px;
+  margin: auto 10px;
+}
+
+.people-card img{
+  border-radius: 100px;
+  margin: 10px auto;
 }

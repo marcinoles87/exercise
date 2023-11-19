@@ -15,7 +15,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch(`https://randomuser.me/api/?results=10`)
+    fetch(`https://randomuser.me/api/?results=12`)
      .then((response) => { return response.json()})
      .then( (data) => {
         setData(data.results)
@@ -27,6 +27,8 @@ function App() {
    const handleOnchange = (e) => {
 
     const newData = [...data]
+
+    setTable(data)
 
     if(e.target.value.length < 1){
       console.log(data)
