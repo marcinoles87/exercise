@@ -10,6 +10,7 @@ function App() {
   // } )
 
   let [data, setData] = useState(null)
+  const [newTable , setTable] = useState()
 
 
 
@@ -26,10 +27,12 @@ function App() {
    const handleOnchange = (e) => {
 
     const newData = [...data]
+
     if(e.target.value.length < 1){
-      setData(newData)
-      console.log('powrot do tablicy orginalnej')
       setData(data)
+      setTable(newData)
+      console.log('powrot do tablicy orginalnej')
+      
     }
     
     const value = e.target.value
@@ -37,14 +40,13 @@ function App() {
     console.log(filtered)
      setData(filtered)
    }
-  
   console.log(data)
   return (
     <div className="App">
       <h1>Exercise</h1>
       <input placeholder='search friend' onChange={handleOnchange}></input>
       <div className='people-container'>
-      {data && data.map( ({gender , email , picture , location , id} , index) => {
+      {newTable && newTable.map( ({gender , email , picture , location , id} , index) => {
         return(
           <>
           <div className='people-card'  key={index}>
