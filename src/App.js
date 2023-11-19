@@ -9,7 +9,7 @@ function App() {
   //   return result.json()
   // } )
 
-  const [data, setData] = useState(null)
+  let [data, setData] = useState(null)
 
 
 
@@ -24,11 +24,17 @@ function App() {
    }, []);
 
    const handleOnchange = (e) => {
+    
     const newData = [...data]
+    if(e.target.value.length < 1){
+      setData(newData)
+      console.log('powrot do tablicy orginalnej')
+    }
+    
     const value = e.target.value
     const filtered = newData.filter( ({gender}) => gender === value )
     console.log(filtered)
-     setData(data)
+     setData(newData)
    }
   
   console.log(data)
