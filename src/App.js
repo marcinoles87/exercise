@@ -26,10 +26,9 @@ function App() {
    const handleOnchange = (e) => {
     const newData = [...data]
     const value = e.target.value
-  
-    const filtered = newData.find( ({gender}) => gender !== value )
+    const filtered = newData.filter( ({gender}) => gender === value )
     console.log(filtered)
-     setData(newData)
+     setData(data)
    }
   
   console.log(data)
