@@ -29,18 +29,18 @@ function App() {
     const newData = [...data]
 
     if(e.target.value.length < 1){
-      setData(data)
-      setTable(newData)
-      console.log('powrot do tablicy orginalnej')
+      console.log(data)
+      setTable(data)
       
     }
     
     const value = e.target.value
     const filtered = newData.filter( ({email}) => email.includes(value) )
     console.log(filtered)
-     setData(filtered)
+     setTable(filtered)
    }
   console.log(data)
+  console.log(newTable)
   return (
     <div className="App">
       <h1>Exercise</h1>
