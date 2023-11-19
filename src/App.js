@@ -24,17 +24,18 @@ function App() {
    }, []);
 
    const handleOnchange = (e) => {
-    
+
     const newData = [...data]
     if(e.target.value.length < 1){
       setData(newData)
       console.log('powrot do tablicy orginalnej')
+      setData(data)
     }
     
     const value = e.target.value
-    const filtered = newData.filter( ({gender}) => gender === value )
+    const filtered = newData.filter( ({email}) => email.includes(value) )
     console.log(filtered)
-     setData(newData)
+     setData(filtered)
    }
   
   console.log(data)
