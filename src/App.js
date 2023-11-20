@@ -11,6 +11,7 @@ function App() {
 
   let [data, setData] = useState(null)
   const [newTable , setTable] = useState()
+  const [show , setShow] = useState(false)
 
 
 
@@ -26,23 +27,22 @@ function App() {
 
    const handleOnchange = (e) => {
 
-    const newData = [...data]
-
-    setTable(data)
+    const newData = [...data];
+    const value = e.target.value;
+    const filtered = newData.filter( ({email}) => email.includes(value) );
 
     if(e.target.value.length < 1){
       console.log(data)
-      setTable(data)
-      
-    }
-    
-    const value = e.target.value
-    const filtered = newData.filter( ({email}) => email.includes(value) )
-    console.log(filtered)
+      setTable(data) 
+    }else(
      setTable(filtered)
+    )
    }
-  console.log(data)
-  console.log(newTable)
+
+   const handleShow = () => {
+    setShow(!show)
+   }
+ 
   return (
     <div className="App">
       <h1>Exercise</h1>
@@ -53,10 +53,12 @@ function App() {
           <>
           <div className='people-card'  key={index}>
               <img src={picture.large} alt={index}></img>
-              <p>name : {id.name}</p>
-              <p> gender : {gender} </p>
-              <p> email : {email}</p>
-              <p> location : {location.country}</p>
+              <button onClick={handleShow}>Show detail</button>
+              {show ?  <><p>name : {id.name}</p><p> gender : {gender} </p> <p> email : {email}</p><p> location : {location.country}</p> </> : '' }
+              
+             
+              
+            
            </div>
            </>
          
