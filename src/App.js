@@ -39,7 +39,7 @@ function App() {
     )
    }
 
-   const handleShow = () => {
+   const handleShow = (e) => {
     setShow(!show)
    }
  
