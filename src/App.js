@@ -75,11 +75,13 @@ function App() {
               <img id='people-img' src={picture.large} alt={index}></img>
               {/* <button onClick={handleShow}>Show detail</button> */}
 
-                {show ?  <div className=''>
+                {/* {show ?   */}
+                <div className='people-info'>
 
-                <p className='people-name'>{name.first} {name.last}</p>
+                  <p className='people-name'>{name.first} {name.last}</p>
                   <p>{location.country}</p> 
-                  </div> : '' }
+                </div> 
+                  {/* : '' } */}
                 </div>
                 
               
