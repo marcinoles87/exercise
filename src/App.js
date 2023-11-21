@@ -16,7 +16,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch(`https://randomuser.me/api/?results=12`)
+    fetch(`https://randomuser.me/api/?results=16`)
      .then((response) => { return response.json()})
      .then( (data) => {
         setData(data.results)
@@ -29,9 +29,25 @@ function App() {
    const handleOnchange = (e) => {
 
    
+   
     const newData = [...data];
     const value = e.target.value;
-    const filtered = newData.filter( ({email}) => email.includes(value) );
+    const filtered = newData.filter( ({name}) => name.last.includes(value) );
+
+    if(e.target.value.length < 1){
+      console.log(data)
+      setTable(data) 
+    }else(
+     setTable(filtered)
+    )
+   }
+
+   const handleOnchangeLocation = (e) => {
+
+   
+    const newData = [...data];
+    const value = e.target.value;
+    const filtered = newData.filter( ({location}) => location.country.includes(value) );
 
     if(e.target.value.length < 1){
       console.log(data)
@@ -49,13 +65,14 @@ function App() {
   return (
     <div className="App">
       <h1>Exercise</h1>
-      <input placeholder='search friend' onChange={handleOnchange}></input>
+      <input placeholder='search by name' onChange={handleOnchange}></input>
+      <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
       {newTable && newTable.map( ({name , picture , location , id} , index) => {
         return(
           <>
           <div className='people-card'  key={index}>
-              <img src={picture.large} alt={index}></img>
+              <img id='people-img' src={picture.large} alt={index}></img>
               <button onClick={handleShow}>Show detail</button>
 
                 {show ?  <><p>name : {name.first} {name.last}</p>
