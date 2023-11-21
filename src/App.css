@@ -21,7 +21,7 @@
   padding: 20px;
   width: 20%;
   margin: 10px;
-  border: 2px solid grey;
+  /* border: 2px solid grey; */
 }
 
 input{
@@ -36,5 +36,10 @@ input{
   border: 3px solid orange;
   border-radius: 100px;
   
+}
+
+.people-name{
+  font-size: 15px;
+  font-weight: bold;
 }
 
