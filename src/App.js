@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="App">
       <h1>Exercise</h1>
-      <input placeholder='search by name' onChange={handleOnchange}></input>
+      <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
       {newTable && newTable.map( ({name , picture , location , id} , index) => {
