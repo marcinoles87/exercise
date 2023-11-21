@@ -21,12 +21,14 @@ function App() {
      .then( (data) => {
         setData(data.results)
         console.log(data.results)
+        setTable(data.results)
       
      })
    }, []);
 
    const handleOnchange = (e) => {
 
+   
     const newData = [...data];
     const value = e.target.value;
     const filtered = newData.filter( ({email}) => email.includes(value) );
@@ -40,6 +42,7 @@ function App() {
    }
 
    const handleShow = (e) => {
+    
     setShow(!show)
    }
  
@@ -48,13 +51,16 @@ function App() {
       <h1>Exercise</h1>
       <input placeholder='search friend' onChange={handleOnchange}></input>
       <div className='people-container'>
-      {newTable && newTable.map( ({gender , email , picture , location , id} , index) => {
+      {newTable && newTable.map( ({name , picture , location , id} , index) => {
         return(
           <>
           <div className='people-card'  key={index}>
               <img src={picture.large} alt={index}></img>
               <button onClick={handleShow}>Show detail</button>
-              {show ?  <><p>name : {id.name}</p><p> gender : {gender} </p> <p> email : {email}</p><p> location : {location.country}</p> </> : '' }
+
+                {show ?  <><p>name : {name.first} {name.last}</p>
+                  <p> location : {location.country}</p> 
+                  </> : '' }
               
              
               
