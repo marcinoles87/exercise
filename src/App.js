@@ -67,6 +67,12 @@ function App() {
     element.classList.toggle('modal')
     
    }
+
+   const handleDelete = (e) => {
+    const index = e.target
+    
+
+   }
  
   return (
     <div className="App">
@@ -80,6 +86,7 @@ function App() {
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
               <button onClick={handleShow}>Show detail</button>
+              <button onClick={handleDelete}>Delete friend</button>
 
                 {show ?  
                 <div className='people-info'>
