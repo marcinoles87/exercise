@@ -61,6 +61,14 @@ function App() {
     
     setShow(!show)
    }
+
+   const handleOnClick = (e) => {
+  
+    const element = e.target;
+    console.log(element)
+    element.classList.toggle('modal')
+    
+   }
  
   return (
     <div className="App">
@@ -71,8 +79,8 @@ function App() {
       {newTable && newTable.map( ({name , picture , location , id} , index) => {
         return(
           <>
-          <div className='people-card'  key={index}>
-              <img id='people-img' src={picture.large} alt={index}></img>
+          <div className='people-card'  key={index} >
+              <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
               {/* <button onClick={handleShow}>Show detail</button> */}
 
                 {/* {show ?   */}
