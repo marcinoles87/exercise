@@ -11,7 +11,7 @@ function App() {
 
   let [data, setData] = useState(null)
   const [newTable , setTable] = useState()
-  const [show , setShow] = useState(true)
+  const [show , setShow] = useState(false)
 
 
 
@@ -27,8 +27,6 @@ function App() {
    }, []);
 
    const handleOnchange = (e) => {
-
-   
    
     const newData = [...data];
     const value = e.target.value;
@@ -81,15 +79,15 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              {/* <button onClick={handleShow}>Show detail</button> */}
+              <button onClick={handleShow}>Show detail</button>
 
-                {/* {show ?   */}
+                {show ?  
                 <div className='people-info'>
 
                   <p className='people-name'>{name.first} {name.last}</p>
                   <p>{location.country}</p> 
                 </div> 
-                  {/* : '' } */}
+                : ''}
                 </div>
                 
               
