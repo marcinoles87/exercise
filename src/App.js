@@ -69,9 +69,13 @@ function App() {
    }
 
    const handleDelete = (e) => {
-
-    const element = e.target
+    e.preventDefault()
+    const element = e.target;
     console.log(element)
+    console.log(newTable)
+    newTable.shift()
+    setTable(newTable)
+
   
    }
  
