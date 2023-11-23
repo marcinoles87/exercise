@@ -72,8 +72,8 @@ function App() {
     
     // const element = e.target;
     const removeElement  = newTable.splice(index , 1);
-    console.log(removeElement)
-    setTable(newTable)
+    
+    setTable(data)
     
 
   
