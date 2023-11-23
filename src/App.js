@@ -42,7 +42,6 @@ function App() {
 
    const handleOnchangeLocation = (e) => {
 
-   
     const newData = [...data];
     const value = e.target.value;
     const filtered = newData.filter( ({location}) => location.country.includes(value) );
@@ -58,6 +57,7 @@ function App() {
    const handleShow = (e) => {
     
     setShow(!show)
+
    }
 
    const handleOnClick = (e) => {
@@ -69,9 +69,10 @@ function App() {
    }
 
    const handleDelete = (e) => {
-    const index = e.target
-    
 
+    const element = e.target
+    console.log(element)
+  
    }
  
   return (
@@ -86,7 +87,7 @@ function App() {
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
               <button onClick={handleShow}>Show detail</button>
-              <button onClick={handleDelete}>Delete friend</button>
+              <button onClick={handleDelete} key={index}>Delete friend</button>
 
                 {show ?  
                 <div className='people-info'>
@@ -97,11 +98,6 @@ function App() {
                 : ''}
                 </div>
                 
-              
-             
-              
-            
-           
            </>
          
         )
