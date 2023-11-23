@@ -68,13 +68,13 @@ function App() {
     
    }
 
-   const handleDelete = (e) => {
-    e.preventDefault()
-    const element = e.target;
-    console.log(element)
-    console.log(newTable)
-    newTable.shift()
+   const handleDelete = (index) => {
+    
+    // const element = e.target;
+    const removeElement  = newTable.splice(index , 1);
+    console.log(removeElement)
     setTable(newTable)
+    
 
   
    }
@@ -91,7 +91,7 @@ function App() {
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
               <button onClick={handleShow}>Show detail</button>
-              <button onClick={handleDelete} key={index}>Delete friend</button>
+              <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
                 {show ?  
                 <div className='people-info'>
