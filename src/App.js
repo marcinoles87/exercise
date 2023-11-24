@@ -69,12 +69,14 @@ function App() {
    }
 
    const handleDelete = (index , e) => {
+
+  
     
    const deleted = newTable.splice(index , 1);
    console.log(deleted)
    console.log(newTable)
-   const tableN = newTable.filter( (item) => item.includes(!index) ) 
-  //  setTable(tableN)
+   const tableN = newTable.filter( (item) => item !==item[index] ) 
+   setTable(tableN)
 
 
       
