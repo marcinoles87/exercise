@@ -68,17 +68,19 @@ function App() {
     
    }
 
-   const handleDelete = (index) => {
+   const handleDelete = (index , e) => {
     
-    
-    console.log(index)
-    const removeElement  = newTable.splice(index , 1);
-    setData(removeElement)
-    setTable(data)
-    
+   const deleted = newTable.splice(index , 1);
+   console.log(deleted)
+   console.log(newTable)
+   const tableN = newTable.filter( (item) => item.includes(!index) ) 
+  //  setTable(tableN)
+
+
+      
+   }
 
   
-   }
  
   return (
     <div className="App">
