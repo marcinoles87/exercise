@@ -70,9 +70,10 @@ function App() {
 
    const handleDelete = (index) => {
     
-    // const element = e.target;
-    const removeElement  = newTable.splice(index , 1);
     
+    console.log(index)
+    const removeElement  = newTable.splice(index , 1);
+    setData(removeElement)
     setTable(data)
     
 
@@ -86,6 +87,7 @@ function App() {
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
       {newTable && newTable.map( ({name , picture , location , id} , index) => {
+        
         return(
           <>
           <div className='people-card'  key={index} >
