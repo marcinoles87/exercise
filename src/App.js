@@ -78,6 +78,10 @@ function App() {
    const tableN = newTable.filter( (item) => item !==item[index] ) 
    setTable(tableN)
 
+   if(tableN < 1){
+    alert('last person ! delete from friend ?')
+   }
+
 
       
    }
