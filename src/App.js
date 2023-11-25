@@ -83,8 +83,9 @@ function App() {
 
    }
 
-   const handleLike = ( e) => {
-     console.log(e.target.index)
+   const handleLike = (index) => {
+    
+     console.log(newTable[index])
     
     
     setLike( like + 1)
@@ -105,7 +106,7 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i class="fa-regular fa-thumbs-up" index={index} onClick={handleLike}>{like}</i>
+              <i class="fa-regular fa-thumbs-up" index={index} onClick={ () => handleLike(index)}>{like}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
