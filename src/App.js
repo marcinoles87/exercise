@@ -9,9 +9,10 @@ function App() {
   //   return result.json()
   // } )
 
-  let [data, setData] = useState(null)
-  const [newTable , setTable] = useState()
-  const [show , setShow] = useState(false)
+  let [data, setData] = useState(null);
+  const [newTable , setTable] = useState();
+  const [show , setShow] = useState(false);
+  const [like , setLike] = useState(0);
 
 
 
@@ -25,6 +26,8 @@ function App() {
       
      })
    }, []);
+
+   
 
    const handleOnchange = (e) => {
    
@@ -70,20 +73,19 @@ function App() {
 
    const handleDelete = (index , e) => {
 
-  
-    
    const deleted = newTable.splice(index , 1);
-   console.log(deleted)
-   console.log(newTable)
    const tableN = newTable.filter( (item) => item !==item[index] ) 
-   setTable(tableN)
 
+   setTable(tableN)
    if(tableN < 1){
     alert('last person ! delete from friend ?')
    }
 
+   }
 
-      
+   const handleLike = (index) => {
+
+    setLike( like + 1)
    }
 
   
@@ -101,6 +103,7 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
+              <i class="fa-regular fa-thumbs-up" onClick={handleLike(index)}>{like}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
