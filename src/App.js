@@ -68,7 +68,7 @@ function App() {
 
    const handleDelete = (index , e) => {
 
-   const deleted = newTable.splice(index , 1);
+   newTable.splice(index , 1);
    const tableN = newTable.filter( (item) => item !==item[index] ) 
 
    setTable(tableN)
@@ -80,13 +80,15 @@ function App() {
 
    const handleLike = (index) => {
     
+    setLike( like + 1)
     newTable[index].likes = like
 
     console.log(newTable[index])
-    setLike( (prevState) => {
-      return prevState + 1
+    console.log(newTable)
+    // setLike( (prevState) => {
+    //   return prevState + 1
 
-    })
+    // })
    }
 
   
@@ -98,13 +100,13 @@ function App() {
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
-      {newTable && newTable.map( ({name , picture , location , id} , index) => {
+      {newTable && newTable.map( ({name , picture , location , id , likes} , index) => {
         
         return(
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index} onClick={ () => handleLike(index)}>{like}</i>
+              <i className="fa-regular fa-thumbs-up" index={index} onClick={ () => handleLike(index)}>{likes}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
