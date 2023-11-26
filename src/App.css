@@ -84,3 +84,12 @@ img:hover{
   z-index: 1;
 }
 
+i{
+  transition: 1s ease;
+}
+
+i:hover{
+  background-color: blue;
+  transform: scale(1.2);
+}
+

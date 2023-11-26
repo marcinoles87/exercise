@@ -17,13 +17,14 @@ function App() {
      .then((response) => { return response.json()})
      .then( (data) => {
         setData(data.results)
-        console.log(data.results)
+        console.log(data.results[0])
         setTable(data.results)
-
+        
      })
    }, []);
 
    
+
 
    const handleOnchange = (e) => {
    
@@ -79,16 +80,16 @@ function App() {
    }
 
    const handleLike = (index) => {
+
+    newTable.forEach(element => {
+      element.likes = like
+      
+     });
+
+     setLike( newTable[index].likes = like +1 )
+
     
-    setLike( like + 1)
-    newTable[index].likes = like
 
-    console.log(newTable[index])
-    console.log(newTable)
-    // setLike( (prevState) => {
-    //   return prevState + 1
-
-    // })
    }
 
   
@@ -106,7 +107,7 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index} onClick={ () => handleLike(index)}>{likes}</i>
+              <i className="fa-regular fa-thumbs-up" index={index} onClick={ () => handleLike(index)}>{like}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
