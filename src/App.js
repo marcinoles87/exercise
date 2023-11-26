@@ -4,10 +4,6 @@ import './App.css';
 
 function App() {
 
-  // fetch("https://randomuser.me/api/?results=2")
-  // .then( (result) => {
-  //   return result.json()
-  // } )
 
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
@@ -24,8 +20,6 @@ function App() {
         console.log(data.results)
         setTable(data.results)
 
-      
-      
      })
    }, []);
 
@@ -68,7 +62,6 @@ function App() {
    const handleOnClick = (e) => {
   
     const element = e.target;
-    console.log(element)
     element.classList.toggle('modal')
     
    }
@@ -87,13 +80,13 @@ function App() {
 
    const handleLike = (index) => {
     
-    
-
     newTable[index].likes = like
 
-    
     console.log(newTable[index])
-    setLike( like + 1)
+    setLike( (prevState) => {
+      return prevState + 1
+
+    })
    }
 
   
@@ -111,7 +104,7 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i class="fa-regular fa-thumbs-up" index={index} onClick={ () => handleLike(index)}>{like}</i>
+              <i className="fa-regular fa-thumbs-up" index={index} onClick={ () => handleLike(index)}>{like}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
