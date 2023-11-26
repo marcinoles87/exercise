@@ -23,6 +23,8 @@ function App() {
         setData(data.results)
         console.log(data.results)
         setTable(data.results)
+
+      
       
      })
    }, []);
@@ -85,9 +87,12 @@ function App() {
 
    const handleLike = (index) => {
     
-     console.log(newTable[index])
     
+
+    newTable[index].likes = like
+
     
+    console.log(newTable[index])
     setLike( like + 1)
    }
 
