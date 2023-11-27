@@ -86,9 +86,9 @@ function App() {
       
      });
 
-     setLike( newTable[index].likes = like +1 )
+     const likes = newTable[index].likes++
+     setLike( likes )
 
-    
 
    }
 
