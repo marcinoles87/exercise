@@ -86,18 +86,19 @@ function App() {
       
      });
 
-    
-    const addCount =newTable.map( (count , i) => {
-      if( i === index) {
-        return count + 1
-      }else {
-        return count 
-      }
-    })
+    const elementIndex = newTable.map( (item) => item.indexOf())
+    console.log(elementIndex)
+    // const addCount = ( (count , i) => {
+    //   if( i === index) {
+    //     return count + 1
+    //   }else {
+    //     return count +1
+    //   }
+    // })
 
     console.log(like)
 
-    setLike(addCount)
+    // setLike(addCount)
 
      
    
