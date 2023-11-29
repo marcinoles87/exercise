@@ -4,13 +4,15 @@ import './App.css';
 
 function App() {
 
+  const likes = [ 0 , 0 ]
 
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [like , setLike] = useState(0);
+  let [like , setLike] = useState(likes);
 
 
+  
 
   useEffect(() => {
     fetch(`https://randomuser.me/api/?results=16`)
@@ -86,8 +88,18 @@ function App() {
       
      });
 
-    const elementIndex = newTable.map( (item) => item.indexOf())
-    console.log(elementIndex)
+     const nextLike =like.map( (i , likeCount) => {
+        if(i === index){
+          return likeCount + 1
+        }else{
+          return likeCount
+        }
+     })
+
+     setLike(nextLike)
+
+    // const elementIndex = newTable.map( (item) => item.indexOf())
+    // console.log(elementIndex)
     // const addCount = ( (count , i) => {
     //   if( i === index) {
     //     return count + 1
