@@ -82,18 +82,25 @@ function App() {
    const handleLike = (index) => {
 
     newTable.forEach(element => {
-      element.likes = like
+      element.like = 0
       
      });
+
+    
+    const addCount =newTable.map( (count , i) => {
+      if( i === index) {
+        return count + 1
+      }else {
+        return count 
+      }
+    })
+
+    console.log(like)
+
+    setLike(addCount)
+
      
-    //  setLike(like++)
-
-     setLike( [ ...newTable ,  { 
-      likes: like++
-     }])
-
-     console.log(newTable[index])
-     console.log(newTable)
+   
      
 
     
