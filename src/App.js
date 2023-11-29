@@ -4,12 +4,10 @@ import './App.css';
 
 function App() {
 
-  let likes = [ 0 ]
-
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [like , setLike] = useState(likes);
+  let [like , setLike] = useState();
 
 
   
@@ -87,19 +85,22 @@ function App() {
       element.like = 0
       
      });
+
     
-
-     const nextLike = like.map( ( c , i) => {
-      console.log(i)
-      console.log(c)
-        if(i === index){
-          return c + 1
-        }else{
-          return c
+    
+     setTable( newTable.map( (item) => {
+      console.log(index)
+      console.log(item)
+      console.log(item.id.value)
+      if(item.index === index){
+        return {
+          ...item ,
+          like : item.like + 1
         }
-     })
-
-     setLike(nextLike)
+      }else{
+        return item
+      }
+     }))
 
 
    }
@@ -111,7 +112,7 @@ function App() {
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
-      {newTable && newTable.map( ({name , picture , location  , likes} , index) => {
+      {newTable && newTable.map( ({name , picture , location  , likes } , index) => {
         
         return(
           <>
