@@ -7,9 +7,10 @@ function App() {
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [likes , setLike] = useState(0);
+  let [likes , setLike] = useState(newTable);
 
 
+  console.log(newTable)
   
 
   useEffect(() => {
@@ -82,29 +83,16 @@ function App() {
    const handleLike = (index) => {
 
     newTable.forEach(element => {
-      element.like = likes
+      element.like = 0
       
      });
 
-    
-    
-     setTable( newTable.map( (item , i) => {
-      console.log(index)
-      console.log(i)
+    setLike( likes.map( () => {
       
-      if(index === i){
-        return {
-          ...item ,
-          likes : item.like + 1
-        }
-      }else{
-        return item
-      }
-     }))
+    }) )
 
-
-   }
-
+  }
+  
    
 
   
@@ -114,13 +102,13 @@ function App() {
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
-      {newTable && newTable.map( ({name , picture , location , likes } , index) => {
-        
+      {newTable && newTable.map( ({name , picture , location , like  } , index) => {
+                
         return(
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>{likes}</i>
+              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>{like}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
