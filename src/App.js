@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
 
-  const likes = [ 0 , 0 ]
+  let likes = [ 0 ]
 
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
@@ -87,36 +87,21 @@ function App() {
       element.like = 0
       
      });
+    
 
-     const nextLike =like.map( (i , likeCount) => {
+     const nextLike = like.map( ( c , i) => {
+      console.log(i)
+      console.log(c)
         if(i === index){
-          return likeCount + 1
+          return c + 1
         }else{
-          return likeCount
+          return c
         }
      })
 
      setLike(nextLike)
 
-    // const elementIndex = newTable.map( (item) => item.indexOf())
-    // console.log(elementIndex)
-    // const addCount = ( (count , i) => {
-    //   if( i === index) {
-    //     return count + 1
-    //   }else {
-    //     return count +1
-    //   }
-    // })
 
-    console.log(like)
-
-    // setLike(addCount)
-
-     
-   
-     
-
-    
    }
 
   
