@@ -77,16 +77,37 @@ function App() {
 
    }
 
-   const handleLike = (index) => {
+   const handleLike = (name) => {
 
-    const element = newTable[index]
-    console.log(element)
+    newTable.forEach(element => {
+      element.count = 0
+      
+    });
 
-    if(index){
-      setCount( prevCount =>  prevCount + 1)
+    console.log(name.last)
+
+    if(name.last.length > 2){
+      newTable.forEach( (element , i) => {
+        console.log(i)
+        element.count = name.last.length
+      })
     }
+    
 
-  }
+    console.log(newTable)
+
+  //   setCount(newTable.map(product => {
+  //     if (product.last === name.last) {
+  //       return {
+  //         ...product,
+  //         count: product.count + 1
+  //       };
+  //     } else {
+  //       return product;
+  //     }
+
+  // }))
+}
   
    
 
@@ -104,7 +125,7 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>{count}</i>
+              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(name)}>{count}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
