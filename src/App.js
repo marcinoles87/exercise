@@ -7,11 +7,8 @@ function App() {
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [likes , setLike] = useState(newTable);
+  let [count , setCount] = useState(0);
 
-
-  console.log(newTable)
-  
 
   useEffect(() => {
     fetch(`https://randomuser.me/api/?results=16`)
@@ -82,18 +79,14 @@ function App() {
 
    const handleLike = (index) => {
 
-    newTable.forEach(element => {
-      element.like = 0
-      
-     });
-
-    setLike( likes.map( () => {
-      
-    }) )
+    if(index){
+      setCount( prevCount =>  prevCount + 1)
+    }
 
   }
   
    
+
 
   
   return (
@@ -108,7 +101,7 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>{like}</i>
+              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>{count}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
