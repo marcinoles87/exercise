@@ -7,7 +7,7 @@ function App() {
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [count , setCount] = useState(0);
+  let [count , setCount] = useState(newTable);
 
 
   useEffect(() => {
@@ -77,36 +77,37 @@ function App() {
 
    }
 
-   const handleLike = (name) => {
+   const handleLike = (index) => {
 
     newTable.forEach(element => {
       element.count = 0
       
     });
 
-    console.log(name.last)
-
-    if(name.last.length > 2){
-      newTable.forEach( (element , i) => {
-        console.log(i)
-        element.count = name.last.length
-      })
-    }
-    
+    // if(name.last.length > 2){
+    //   newTable.forEach( (element , i) => {
+    //     console.log(i)
+    //     element.count = name.last.length
+    //   })
+    // }
 
     console.log(newTable)
+    console.log(index)
 
-  //   setCount(newTable.map(product => {
-  //     if (product.last === name.last) {
-  //       return {
-  //         ...product,
-  //         count: product.count + 1
-  //       };
-  //     } else {
-  //       return product;
-  //     }
+    setCount(newTable.map( (item , i )=> {
+      console.log(item)
+      console.log(i)
 
-  // }))
+      if(i === index){
+        alert('wybrano to samo')
+        return{
+          ...item,
+          count : 1
+        }
+
+      }
+     
+  }))
 }
   
    
@@ -125,7 +126,7 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(name)}>{count}</i>
+              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}></i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
