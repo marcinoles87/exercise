@@ -79,6 +79,9 @@ function App() {
 
    const handleLike = (index) => {
 
+    const element = newTable[index]
+    console.log(element)
+
     if(index){
       setCount( prevCount =>  prevCount + 1)
     }
