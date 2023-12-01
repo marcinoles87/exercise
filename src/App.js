@@ -46,10 +46,7 @@ function App() {
   let [counter , setCounter] = useState(test)
   
 
-  newTable.forEach(element => {
-    element.count = 0
-    
-  });
+  
   
   
    const handleCounter = (id) => {
@@ -124,9 +121,12 @@ function App() {
 
    }
 
-   const handleLike = (index) => {
+   const handleLike = (newName) => {
 
-    
+    newTable.forEach(element => {
+      element.count = 0
+      
+    });
 
     // if(name.last.length > 2){
     //   newTable.forEach( (element , i) => {
@@ -136,27 +136,25 @@ function App() {
     // }
 
 
-    newTable.map( (item , i )=> {
-    
-      console.log(index)
-      console.log(i)
-      if(i === index){
-        alert('wybrano to samo')
-        return{
-          ...item,
-          name : 'ssss' ,
-          count : 2        
+    console.log(newName)
+    setTable( newTable.map ( (item) => {
+      console.log(item)
+        if(item.name === newName){
+          return{
+            ...newTable ,
+            count : item.count + 1
+          }
+        }else{
+          return newTable
         }
+      }))
 
-        
+    }
+    
+     
+     
 
-      }else{ return (item)
-      }
-
-      
-    })
-
-  }
+     
       
   
    
@@ -180,13 +178,14 @@ function App() {
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
-      {newTable && newTable.map( ( {name , picture , location , like   }  , index) => {
+      {newTable && newTable.map( ( {name , picture , location , like , count  }  , index) => {
+        const newName = name.last
                 
         return(
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>{count}</i>
+              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(newName)}>+ {count}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
