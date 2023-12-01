@@ -25,6 +25,8 @@ function App() {
 
    ]
 
+   
+
    useEffect(() => {
     fetch(`https://randomuser.me/api/?results=16`)
      .then((response) => { return response.json()})
@@ -40,10 +42,14 @@ function App() {
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [count , setCount] = useState(0);
+  let [count , setCount] = useState();
   let [counter , setCounter] = useState(test)
+  
 
-
+  newTable.forEach(element => {
+    element.count = 0
+    
+  });
   
   
    const handleCounter = (id) => {
@@ -120,10 +126,7 @@ function App() {
 
    const handleLike = (index) => {
 
-    newTable.forEach(element => {
-      element.count = 0
-      
-    });
+    
 
     // if(name.last.length > 2){
     //   newTable.forEach( (element , i) => {
