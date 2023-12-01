@@ -4,13 +4,28 @@ import './App.css';
 
 function App() {
 
-  let [data, setData] = useState(null);
-  const [newTable , setTable] = useState();
-  const [show , setShow] = useState(false);
-  let [count , setCount] = useState(0);
+  const test = [
+    {
+      id:1 ,
+      counter : 0 ,
+      name: 'a'
+    },
 
+    {
+      id:2 ,
+      counter : 0,
+      name : 'b'
+    },
 
-  useEffect(() => {
+    {
+      id:3 ,
+      counter : 0,
+      name : 'c'
+    }
+
+   ]
+
+   useEffect(() => {
     fetch(`https://randomuser.me/api/?results=16`)
      .then((response) => { return response.json()})
      .then( (data) => {
@@ -21,6 +36,32 @@ function App() {
      })
    }, []);
 
+
+  let [data, setData] = useState(null);
+  const [newTable , setTable] = useState();
+  const [show , setShow] = useState(false);
+  let [count , setCount] = useState(0);
+  let [counter , setCounter] = useState(test)
+
+
+  
+  
+   const handleCounter = (id) => {
+    setCounter(  counter.map( (item) => {
+      if(item.id === id){
+        return{
+          ...item,
+          counter : item.counter +1
+        }
+      }else{
+        return item
+      }
+    })
+    
+      
+    )
+
+   }
    
 
 
@@ -122,6 +163,17 @@ function App() {
   return (
     <div className="App">
       <h1>Exercise</h1>
+
+      {counter.map( (item) => {
+        return(
+          <li key={item.id}>
+            {item.name} {' '}
+            {item.counter}
+            <button onClick={ () => {handleCounter(item.id) }}>+</button>
+          </li>
+        )
+      })}
+
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
