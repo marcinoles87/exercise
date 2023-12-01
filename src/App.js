@@ -7,7 +7,7 @@ function App() {
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [count , setCount] = useState(newTable);
+  let [count , setCount] = useState(0);
 
 
   useEffect(() => {
@@ -91,24 +91,24 @@ function App() {
     //   })
     // }
 
-    console.log(newTable)
-    console.log(index)
 
-    setCount(newTable.map( (item , i )=> {
-      console.log(item)
+    newTable.map( (item , i )=> {
+    
+      console.log(index)
       console.log(i)
-
       if(i === index){
         alert('wybrano to samo')
         return{
           ...item,
-          count : 1
+          item : 'ssss'
         }
 
+      }else{ return (item)
       }
-     
-  }))
-}
+    })
+
+  }
+      
   
    
 
@@ -120,13 +120,13 @@ function App() {
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
-      {newTable && newTable.map( ({name , picture , location , like  } , index) => {
+      {newTable && newTable.map( ( {name , picture , location , like   }  , index) => {
                 
         return(
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}></i>
+              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>{count}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
