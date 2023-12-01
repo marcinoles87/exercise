@@ -100,11 +100,16 @@ function App() {
         alert('wybrano to samo')
         return{
           ...item,
-          item : 'ssss'
+          name : 'ssss' ,
+          count : 2        
         }
+
+        
 
       }else{ return (item)
       }
+
+      
     })
 
   }
