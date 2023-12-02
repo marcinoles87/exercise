@@ -42,7 +42,7 @@ function App() {
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [count , setCount] = useState();
+  let [count , setCount] = useState(0);
   let [counter , setCounter] = useState(test)
   
 
@@ -126,19 +126,16 @@ function App() {
    
    const handleLike = (index) => {
 
-    newTable.forEach(element => {
-      element.count = 0
-      
-    });
-
-    console.log(index)
-
     setCount( newTable.map( (item,i) => {
-      console.log(item[index])
-      
 
+      
       if(i === index){
-        
+        return{
+          ...item,
+          count : item.count++
+        }
+      }else{
+        return item
       }
     }) )
 
