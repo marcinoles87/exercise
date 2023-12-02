@@ -57,10 +57,7 @@ input{
   
 }
 
-img:hover{
-  transform: translateX(50px);
-  
-}
+
 
 .people-info{
   display: flex;

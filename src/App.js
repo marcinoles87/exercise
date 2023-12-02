@@ -28,7 +28,7 @@ function App() {
    
 
    useEffect(() => {
-    fetch(`https://randomuser.me/api/?results=3`)
+    fetch(`https://randomuser.me/api/?results=10`)
      .then((response) => { return response.json()})
      .then( (data) => {
         setData(data.results)
@@ -43,14 +43,13 @@ function App() {
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
   let [counter , setCounter] = useState(test)
-  
 
   
   
   
    const handleCounter = (id) => {
     newTable.forEach(element => {
-      element.count = 1
+      element.count = 0
       
     });
     setCounter(  counter.map( (item) => {
@@ -127,9 +126,7 @@ function App() {
    
    
    
-   const handleLike = (index) => {
-
-   
+   const handleLikeIncrement = (index) => {
 
     setTable( newTable.map( (item,i) => {
 
@@ -145,17 +142,25 @@ function App() {
     }) )
 
     }
+
+    const handleLikeDecrement = (index) => {
+
+      setTable( newTable.map( (item,i) => {
+  
+       
+        if(i === index){
+          return{
+            ...item,
+            count : item.count -1
+          }
+        }else{
+          return item
+        }
+      }) )
+  
+      }
     
-     
-     
 
-     
-      
-  
-   
-
-
-  
   return (
     <div className="App">
       <h1>Exercise</h1>
@@ -173,7 +178,7 @@ function App() {
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
-      {newTable && newTable.map( ( {name , picture , location , like , count  }  , index) => {
+      {newTable && newTable.map( ( {name , picture , location  , count  }  , index) => {
 
       
         
@@ -181,8 +186,10 @@ function App() {
         return(
           <>
           <div className='people-card'  key={index} >
-              <img id='people-img' src={picture.medium} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>+{count}</i>
+              <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
+              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLikeIncrement(index)}></i>  {count}
+              <i className="fa-regular fa-thumbs-down" index={index}  onClick={() => handleLikeDecrement(index)}></i>
+             
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
