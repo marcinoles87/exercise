@@ -28,7 +28,7 @@ function App() {
    
 
    useEffect(() => {
-    fetch(`https://randomuser.me/api/?results=16`)
+    fetch(`https://randomuser.me/api/?results=3`)
      .then((response) => { return response.json()})
      .then( (data) => {
         setData(data.results)
@@ -121,33 +121,26 @@ function App() {
 
    }
 
-   const handleLike = (newName) => {
+   
+   
+   
+   const handleLike = (index) => {
 
     newTable.forEach(element => {
       element.count = 0
       
     });
 
-    // if(name.last.length > 2){
-    //   newTable.forEach( (element , i) => {
-    //     console.log(i)
-    //     element.count = name.last.length
-    //   })
-    // }
+    console.log(index)
 
+    setCount( newTable.map( (item,i) => {
+      console.log(item[index])
+      
 
-    console.log(newName)
-    setTable( newTable.map ( (item) => {
-      console.log(item)
-        if(item.name === newName){
-          return{
-            ...newTable ,
-            count : item.count + 1
-          }
-        }else{
-          return newTable
-        }
-      }))
+      if(i === index){
+        
+      }
+    }) )
 
     }
     
@@ -179,13 +172,15 @@ function App() {
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
       {newTable && newTable.map( ( {name , picture , location , like , count  }  , index) => {
-        const newName = name.last
+
+      
+        
                 
         return(
           <>
           <div className='people-card'  key={index} >
-              <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(newName)}>+ {count}</i>
+              <img id='people-img' src={picture.medium} alt={index} onClick={handleOnClick}></img>
+              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}>+{count}</i>
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
