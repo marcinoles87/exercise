@@ -49,7 +49,7 @@ function App() {
   
    const handleCounter = (id) => {
     newTable.forEach(element => {
-      element.count = 0
+      element.count = 11
       
     });
     setCounter(  counter.map( (item) => {
