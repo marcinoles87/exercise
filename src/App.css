@@ -61,8 +61,18 @@ input{
 
 .people-info{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 
+}
+
+.people-info p{
+  width: 100%;
+}
+
+.people i {
+  width: 100%;
 }
 
 .people-name{

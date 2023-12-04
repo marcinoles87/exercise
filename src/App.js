@@ -128,13 +128,17 @@ function App() {
    
    
    
-   const handleLikeIncrement = (index) => {
+   const handleLike = (index) => {
 
     if(newVal){
       newTable.forEach(element => {
-        element.count = 0 } )
+        element.countLike = 0
+        element.countUnlike = 0
+         }  )
         setNewvalue(false)
     }
+
+
 
     setTable( newTable.map( (item,i) => {
 
@@ -142,7 +146,7 @@ function App() {
       if(i === index){
         return{
           ...item,
-          count : item.count + 1
+          countLike : item.countLike + 1
         }
       }else{
         return item
@@ -151,7 +155,15 @@ function App() {
 
     }
 
-    const handleLikeDecrement = (index) => {
+    const handleUnLike = (index) => {
+
+      if(newVal){
+        newTable.forEach(element => {
+          element.countLike = 0 
+          element.countUnlike = 0
+           }  )
+          setNewvalue(false)
+      }
 
       setTable( newTable.map( (item,i) => {
   
@@ -159,7 +171,7 @@ function App() {
         if(i === index){
           return{
             ...item,
-            count : item.count -1
+            countUnlike : item.countUnlike +1
           }
         }else{
           return item
@@ -186,7 +198,7 @@ function App() {
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
       <div className='people-container'>
-      {newTable && newTable.map( ( {name , picture , location  , count  }  , index) => {
+      {newTable && newTable.map( ( {name , picture , location  , countLike , countUnlike }  , index) => {
 
       
         
@@ -203,8 +215,8 @@ function App() {
 
                   <p className='people-name'>{name.first} {name.last}</p>
                   <p>{location.country}</p> 
-                  <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLikeIncrement(index)}></i>  {count}
-              <i className="fa-regular fa-thumbs-down" index={index}  onClick={() => handleLikeDecrement(index)}></i>
+                  <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}></i>  {countLike}
+              <i className="fa-regular fa-thumbs-down" index={index}  onClick={() => handleUnLike(index)}></i> { countUnlike}
                 </div> 
                 : ''}
                 </div>
