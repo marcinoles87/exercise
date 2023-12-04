@@ -42,22 +42,17 @@ function App() {
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [counter , setCounter] = useState(test)
+  let [counter , setCounter] = useState(test);
+  const [newVal , setNewvalue] = useState(true);
+
 
   
-  if(newTable){
-    newTable.forEach( value => {
-      value.count = 0
-    })
-    return newTable = false;
-  }
-
+ 
  
   
    const handleCounter = (id) => {
 
-    // newTable.forEach(element => {
-    //   element.count = 0 } )
+  
    
     setCounter(  counter.map( (item) => {
       if(item.id === id){
@@ -135,6 +130,12 @@ function App() {
    
    const handleLikeIncrement = (index) => {
 
+    if(newVal){
+      newTable.forEach(element => {
+        element.count = 0 } )
+        setNewvalue(false)
+    }
+
     setTable( newTable.map( (item,i) => {
 
      
@@ -194,9 +195,6 @@ function App() {
           <>
           <div className='people-card'  key={index} >
               <img id='people-img' src={picture.large} alt={index} onClick={handleOnClick}></img>
-              <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLikeIncrement(index)}></i>  {count}
-              <i className="fa-regular fa-thumbs-down" index={index}  onClick={() => handleLikeDecrement(index)}></i>
-             
               <button onClick={handleShow}>Show detail</button>
               <button onClick={ () => handleDelete(index)}>Delete friend</button>
 
@@ -205,6 +203,8 @@ function App() {
 
                   <p className='people-name'>{name.first} {name.last}</p>
                   <p>{location.country}</p> 
+                  <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLikeIncrement(index)}></i>  {count}
+              <i className="fa-regular fa-thumbs-down" index={index}  onClick={() => handleLikeDecrement(index)}></i>
                 </div> 
                 : ''}
                 </div>
