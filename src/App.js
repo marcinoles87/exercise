@@ -42,34 +42,7 @@ function App() {
   let [data, setData] = useState(null);
   const [newTable , setTable] = useState();
   const [show , setShow] = useState(false);
-  let [counter , setCounter] = useState(test);
   const [newVal , setNewvalue] = useState(true);
-
-
-  
- 
- 
-  
-   const handleCounter = (id) => {
-
-  
-   
-    setCounter(  counter.map( (item) => {
-      if(item.id === id){
-        return{
-          ...item,
-          counter : item.counter +1
-        }
-      }else{
-        return item
-      }
-    })
-    
-      
-    )
-
-   }
-   
 
 
    const handleOnchange = (e) => {
@@ -79,7 +52,6 @@ function App() {
     const filtered = newData.filter( ({name}) => name.last.includes(value) );
 
     if(e.target.value.length < 1){
-      console.log(data)
       setTable(data) 
     }else(
      setTable(filtered)
@@ -93,7 +65,6 @@ function App() {
     const filtered = newData.filter( ({location}) => location.country.includes(value) );
 
     if(e.target.value.length < 1){
-      console.log(data)
       setTable(data) 
     }else(
      setTable(filtered)
@@ -185,15 +156,6 @@ function App() {
     <div className="App">
       <h1>Exercise</h1>
 
-      {counter.map( (item) => {
-        return(
-          <li key={item.id}>
-            {item.name} {' '}
-            {item.counter}
-            <button onClick={ () => {handleCounter(item.id) }}>+</button>
-          </li>
-        )
-      })}
 
       <input placeholder='search by last name' onChange={handleOnchange}></input>
       <input placeholder='search by location' onChange={handleOnchangeLocation}></input>
