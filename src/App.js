@@ -45,13 +45,20 @@ function App() {
   let [counter , setCounter] = useState(test)
 
   
-  
+  if(newTable){
+    newTable.forEach( value => {
+      value.count = 0
+    })
+    return newTable = false;
+  }
+
+ 
   
    const handleCounter = (id) => {
-    newTable.forEach(element => {
-      element.count = 11
-      
-    });
+
+    // newTable.forEach(element => {
+    //   element.count = 0 } )
+   
     setCounter(  counter.map( (item) => {
       if(item.id === id){
         return{
