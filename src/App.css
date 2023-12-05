@@ -63,7 +63,7 @@ input{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 
 }
 
@@ -73,6 +73,16 @@ input{
 
 .people i {
   width: 100%;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.icon-blue{
+  color:rgb(7, 7, 151);
+}
+
+.icon-red{
+  color:red;
 }
 
 .people-name{
@@ -96,7 +106,6 @@ i{
 }
 
 i:hover{
-  background-color: blue;
-  transform: scale(1.2);
+  transform: scale(1.5);
 }
 

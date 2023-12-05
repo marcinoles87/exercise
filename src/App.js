@@ -177,8 +177,8 @@ function App() {
 
                   <p className='people-name'>{name.first} {name.last}</p>
                   <p>{location.country}</p> 
-                  <i className="fa-regular fa-thumbs-up" index={index}  onClick={() => handleLike(index)}></i>  {countLike}
-              <i className="fa-regular fa-thumbs-down" index={index}  onClick={() => handleUnLike(index)}></i> { countUnlike}
+                  <i className="fa-regular fa-thumbs-up icon-blue" index={index}  onClick={() => handleLike(index)}>{countLike}</i>  
+              <i className="fa-regular fa-thumbs-down icon-red" index={index}  onClick={() => handleUnLike(index)}>{ countUnlike}</i> 
                 </div> 
                 : ''}
                 </div>
